@@ -37,12 +37,27 @@ namespace Mood_Analyser_Testing
         }
 
         [TestMethod]
-        public void GivenMood_WhenNull_ShouldReturn_HAPPY_MOOD()
+        public void GivenMood_WhenNull_ShouldReturn_Null_MOOD_EXCEPTION_MESSAGE()
         {
             //Arrange
             string moodMessage = null;
             MoodAnalyser moodAnalyser = new MoodAnalyser();
-            string expected = "HAPPY";
+            string expected = "Null message passed.";
+
+            //Act
+            string actual = moodAnalyser.AnalyseMood(moodMessage);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void GivenMood_WhenEmpty_ShouldReturn_EMPTY_MOOD_EXCEPTION_MESSAGE()
+        {
+            //Arrange
+            string moodMessage = string.Empty;
+            MoodAnalyser moodAnalyser = new MoodAnalyser();
+            string expected = "Empty message passed.";
 
             //Act
             string actual = moodAnalyser.AnalyseMood(moodMessage);
