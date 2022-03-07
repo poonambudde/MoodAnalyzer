@@ -10,7 +10,7 @@ namespace Mood_Analyser_Problems
         public string AnalyseMood(string moodMessage)
         {
             try
-            {
+            { 
                 if (moodMessage == null)
                 {
                     throw new MoodAnalyserCustomException(ExceptionType.NULL_MESSAGE_EXCEPTION, "Null message passed.");
