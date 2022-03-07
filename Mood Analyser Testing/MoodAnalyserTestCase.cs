@@ -4,7 +4,7 @@ using Mood_Analyser_Problems;
 namespace Mood_Analyser_Testing
 {
     [TestClass]
-    public class MoodAnalyserTestCase
+    public class UnitTest1
     {
         [TestMethod]
         public void GivenMood_WhenSad_ShouldReturn_SAD_MOOD()
@@ -54,12 +54,43 @@ namespace Mood_Analyser_Testing
             Assert.AreEqual(expected, actual);
         }
 
+        
         [TestMethod]
         public void GivenMoodAnalyserClassName_ShouldReturns_MoodAnalyserObject()
         {          
             object expected = new MoodAnalyser();
             object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser");
             expected.Equals(obj);
+        }
+        
+        [TestMethod]
+        public void GivenImproperClassName_Shouldthrow_MoodAnalysisException()
+        {
+            string expected = "Class Not Found";
+            try
+            {
+                MoodAnalyser moodAnalyser = new MoodAnalyser();
+                object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser.MoodAnalyser", "MoodAnalyser");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void GivenImproperConstructor_Shouldthrow_MoodAnalysisException()
+        {
+            string expected = "Constructor is Not Found";
+            try
+            {
+                MoodAnalyser moodAnalyser = new MoodAnalyser();
+                object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalysers");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
         }
     }
 }
