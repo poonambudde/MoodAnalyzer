@@ -6,6 +6,8 @@ namespace Mood_Analyser_Testing
     [TestClass]
     public class UnitTest1
     {
+
+        // TC 1.1 : Given Mood When Sad Should Return SAD Mood.
         [TestMethod]
         public void GivenMood_WhenSad_ShouldReturn_SAD_MOOD()
         {
@@ -18,6 +20,7 @@ namespace Mood_Analyser_Testing
             Assert.AreEqual(expected, actual);
         }
 
+        // TC 1.2 : Given Mood When Happy Should Return HAPPY Mood.
         [TestMethod]
         public void GivenMood_WhenHappy_ShouldReturn_HAPPY_MOOD()
         {
@@ -30,6 +33,8 @@ namespace Mood_Analyser_Testing
             Assert.AreEqual(expected, actual);
         }
 
+
+        // TC 3.1 : Given Mood When Null Should Return Null Mood Exception Message.
         [TestMethod]
         public void GivenMood_WhenNull_ShouldReturn_Null_MOOD_EXCEPTION_MESSAGE()
         {
@@ -42,6 +47,7 @@ namespace Mood_Analyser_Testing
             Assert.AreEqual(expected, actual);
         }
 
+        // TC 3.2 : Given Mood When Empty Should Return Empty Mood Exception Message.
         [TestMethod]
         public void GivenMood_WhenEmpty_ShouldReturn_EMPTY_MOOD_EXCEPTION_MESSAGE()
         {
@@ -54,7 +60,8 @@ namespace Mood_Analyser_Testing
             Assert.AreEqual(expected, actual);
         }
 
-        
+
+        // TC 4.1 : Given MoodAnalyser Class Name Should Returns MoodAnalyser Object.
         [TestMethod]
         public void GivenMoodAnalyserClassName_ShouldReturns_MoodAnalyserObject()
         {          
@@ -62,9 +69,10 @@ namespace Mood_Analyser_Testing
             object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser");
             expected.Equals(obj);
         }
-        
+
+        // TC 4.2 : Given Class Name When Improper Should Throw MoodAnalysis Exception.
         [TestMethod]
-        public void GivenImproperClassName_Shouldthrow_MoodAnalysisException()
+        public void GivenClassName_WhenImproper_Shouldthrow_MoodAnalysisException()
         {
             string expected = "Class Not Found";
             try
@@ -78,8 +86,9 @@ namespace Mood_Analyser_Testing
             }
         }
 
+        // TC 4.3 : Given Constructor When Improper Should Throw  MoodAnalysisException.
         [TestMethod]
-        public void GivenImproperConstructor_Shouldthrow_MoodAnalysisException()
+        public void GivenConstructor_WhenImproper_Shouldthrow_MoodAnalysisException()
         {
             string expected = "Constructor is Not Found";
             try
