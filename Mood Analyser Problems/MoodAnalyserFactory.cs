@@ -22,7 +22,7 @@ namespace Mood_Analyser_Problems
                     return Activator.CreateInstance(moodAnalyseType);
                 }
                 catch (ArgumentNullException)
-                {
+                { 
                     throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_CLASS, "Class Not Found");
                 }
             }

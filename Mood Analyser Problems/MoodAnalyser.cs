@@ -20,7 +20,7 @@ namespace Mood_Analyser_Problems
                     throw new MoodAnalyserCustomException(ExceptionType.EMPTY_MESSAGE_EXCEPTION, "Empty message passed.");
                 }
                 if (moodMessage.ToLower().Contains("sad"))
-                {
+                { 
                     return "SAD";
                 }
                 else
