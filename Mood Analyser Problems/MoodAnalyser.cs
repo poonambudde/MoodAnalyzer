@@ -42,8 +42,7 @@ namespace Mood_Analyser_Problems
             catch(Exception ex)
             {
                 return ex.Message;
-            }
-            
+            }            
         }
     }
 }
