@@ -95,7 +95,7 @@ namespace Mood_Analyser_Testing
         public void GivenMoodAnalyserClassName_ShouldReturns_MoodAnalyserObject()
         {
             object expected = new MoodAnalyser();
-            object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser");
+            object obj = MoodAnalyserReflector.CreateMoodAnalyser("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser");
             expected.Equals(obj);
         }
 
@@ -107,7 +107,7 @@ namespace Mood_Analyser_Testing
             try
             {
                 MoodAnalyser moodAnalyser = new MoodAnalyser();
-                object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser.MoodAnalyser", "MoodAnalyser");
+                object obj = MoodAnalyserReflector.CreateMoodAnalyser("Mood_Analyser.MoodAnalyser", "MoodAnalyser");
             }
             catch (MoodAnalyserCustomException ex)
             {
@@ -123,7 +123,7 @@ namespace Mood_Analyser_Testing
             try
             {
                 MoodAnalyser moodAnalyser = new MoodAnalyser();
-                object obj = MoodAnalyserFactory.CreateMoodAnalyser("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalysers");
+                object obj = MoodAnalyserReflector.CreateMoodAnalyser("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalysers");
             }
             catch (MoodAnalyserCustomException ex)
             {
@@ -137,7 +137,7 @@ namespace Mood_Analyser_Testing
         public void GivenMoodAnalyserClassName_WhenProper_ShouldReturns_MoodAnalyserObject()
         {
             object expected = new MoodAnalyser("HAPPY");
-            object obj = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser", "HAPPY");
+            object obj = MoodAnalyserReflector.CreateMoodAnalyserUsingParameterizedConstructor("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser", "HAPPY");
             expected.Equals(obj);
         }
 
@@ -148,7 +148,7 @@ namespace Mood_Analyser_Testing
             string expected = "Class is Not Found";
             try
             {
-                object moodAnalyserObject = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser", "HAPPY");
+                object moodAnalyserObject = MoodAnalyserReflector.CreateMoodAnalyserUsingParameterizedConstructor("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser", "HAPPY");
             }
             catch (MoodAnalyserCustomException ex)
             {
@@ -163,7 +163,33 @@ namespace Mood_Analyser_Testing
             string expected = "Constructor is Not Found";
             try
             {
-                object moodAnalyserObject = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser", "HAPPY");
+                object moodAnalyserObject = MoodAnalyserReflector.CreateMoodAnalyserUsingParameterizedConstructor("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser", "HAPPY");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+   
+
+        ///  TC 6.1 Given happy message using reflection when proper should return happy mood.
+        [TestMethod]
+        public void GivenHappyMessage_WhenUsingReflection_ThenShouldReturnHappyMood()
+        {
+            string expected = "Happy";
+            object obj = MoodAnalyserReflector.InvokeAnalyseMood("Happy", "AnalyseMood");
+            Assert.AreEqual(expected, obj);
+        }
+
+        //  TC 6.2 Given happy message when improper method should throw Mood Analysis Exception.
+        [TestMethod]
+        public void GivenHappyMessage_WhenImproperMethod_ShouldThrow_MoodAnalysisException()
+
+        {
+            string expected = "Method is not found";
+            try
+            {
+                object obj = MoodAnalyserReflector.InvokeAnalyseMood("Happy", "WrongAnalyseMood");
             }
             catch (MoodAnalyserCustomException ex)
             {
