@@ -7,6 +7,16 @@ namespace Mood_Analyser_Problems
 {
     public class MoodAnalyser
     {
+        string moodMessage;
+        public MoodAnalyser(string moodMessage)
+        {
+            this.moodMessage = moodMessage;
+        }
+
+        public MoodAnalyser()
+            {
+            }
+        
         public string AnalyseMood(string moodMessage)
         {
             try
