@@ -6,6 +6,7 @@ namespace Mood_Analyser_Problems
 {
     public class MoodAnalyserCustomException : Exception
     {
+    
         //Enum for Exception Type
         public enum ExceptionType
         {
