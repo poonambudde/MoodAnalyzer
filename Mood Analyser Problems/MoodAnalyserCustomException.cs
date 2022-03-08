@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,7 +11,8 @@ namespace Mood_Analyser_Problems
         {
             NULL_MESSAGE_EXCEPTION, EMPTY_MESSAGE_EXCEPTION,
             NO_SUCH_METHOD, NO_SUCH_CLASS,
-            NO_SUCH_METHOD_ERROR
+            NO_SUCH_METHOD_ERROR, EMPTY_MESSAGE,
+            NO_SUCH_FIELD
         }
 
         private readonly ExceptionType exceptionType;

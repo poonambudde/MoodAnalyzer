@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
@@ -24,7 +24,7 @@ namespace Mood_Analyser_Problems
                     return Activator.CreateInstance(moodAnalyseType);
                 }
                 catch (ArgumentNullException)
-                { 
+                {
                     throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_CLASS, "Class Not Found");
                 }
             }
@@ -71,6 +71,31 @@ namespace Mood_Analyser_Problems
             catch
             {
                 throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "Method is not found");
+            }
+        }
+
+        // Use SetField Method to change mood dynamically.
+        public static string SetField(string value, string fieldName)
+        {
+            try
+            {
+                MoodAnalyser obj = (MoodAnalyser)CreateMoodAnalyserUsingParameterizedConstructor("Mood_Analyser_Problem.MoodAnalyser", "MoodAnalyser", value);
+                Type type = typeof(MoodAnalyser);
+                FieldInfo fieldInfo = type.GetField(fieldName);
+                if (fieldInfo != null)
+                {
+                    if (value == null)
+                    {
+                        throw new MoodAnalyserCustomException(ExceptionType.EMPTY_MESSAGE, "Message should not be null");
+                    }
+                    fieldInfo.SetValue(obj, value);
+                    return obj.message;
+                }
+                throw new MoodAnalyserCustomException(ExceptionType.NO_SUCH_FIELD, "Field not found");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
             }
         }
     }
