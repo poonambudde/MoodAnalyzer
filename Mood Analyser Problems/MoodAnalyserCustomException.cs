@@ -12,7 +12,7 @@ namespace Mood_Analyser_Problems
             NULL_MESSAGE_EXCEPTION, EMPTY_MESSAGE_EXCEPTION,
             NO_SUCH_METHOD, NO_SUCH_CLASS
         }
-        
+
         private readonly ExceptionType exceptionType;
 
         public MoodAnalyserCustomException(ExceptionType exceptionType, string exceptionMessage) : base(exceptionMessage)

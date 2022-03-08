@@ -34,21 +34,21 @@ namespace Mood_Analyser_Testing
         }
 
 
-        //// TC 2.1 : Given Mood When Null Should Return HAPPY mood.
-        //[TestMethod]
-        //public void GivenMood_WhenNull_ShouldReturn_HAPPY_MOOD()
-        //{
-        //    //Arrange
-        //    string moodMessage = null;
-        //    MoodAnalyser moodAnalyser = new MoodAnalyser();
-        //    string expected = "HAPPY";
+        // TC 2.1 : Given Mood When Null Should Return HAPPY mood.
+        [TestMethod]
+        public void GivenMood_WhenNull_ShouldReturn_HAPPY_MOOD()
+        {
+            //Arrange
+            string moodMessage = null;
+            MoodAnalyser moodAnalyser = new MoodAnalyser();
+            string expected = "HAPPY";
 
-        //    //Act
-        //    string actual = moodAnalyser.AnalyseMood(moodMessage);
+            //Act
+            string actual = moodAnalyser.AnalyseMood("HAPPY");
 
-        //    //Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
 
         // TC 3.1 : Given Mood When Null Should Return Null Mood Exception Message.
