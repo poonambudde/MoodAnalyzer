@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using static Mood_Analyser_Problems.MoodAnalyserCustomException;
