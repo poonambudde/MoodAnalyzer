@@ -13,7 +13,6 @@ namespace Mood_Analyser_Problems
             NO_SUCH_METHOD, NO_SUCH_CLASS,
             NO_SUCH_METHOD_ERROR
         }
-
         private readonly ExceptionType exceptionType;
 
         public MoodAnalyserCustomException(ExceptionType exceptionType, string exceptionMessage) : base(exceptionMessage)
