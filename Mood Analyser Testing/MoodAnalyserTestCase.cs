@@ -176,7 +176,7 @@ namespace Mood_Analyser_Testing
         [TestMethod]
         public void GivenHappyMessage_WhenUsingReflection_ThenShouldReturnHappyMood()
         {
-            object expected = new MoodAnalyser("HAPPY");
+            string expected = "Happy";
             object obj = MoodAnalyserReflector.InvokeAnalyseMood("Happy", "AnalyseMood");
             Assert.AreEqual(expected, obj);
         }
