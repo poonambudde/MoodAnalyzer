@@ -2,7 +2,8 @@
 
 namespace Mood_Analyser_Problems
 {
-    class Program
+    public 
+        class Program
     {
         static void Main()
         {

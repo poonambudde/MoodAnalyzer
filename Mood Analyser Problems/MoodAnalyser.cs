@@ -7,6 +7,16 @@ namespace Mood_Analyser_Problems
 {
     public class MoodAnalyser
     {
+        string moodMessage;
+        public MoodAnalyser(string moodMessage)
+        {
+            this.moodMessage = moodMessage;
+        }
+
+        public MoodAnalyser()
+            {
+            }
+        
         public string AnalyseMood(string moodMessage)
         {
             try
@@ -20,7 +30,7 @@ namespace Mood_Analyser_Problems
                     throw new MoodAnalyserCustomException(ExceptionType.EMPTY_MESSAGE_EXCEPTION, "Empty message passed.");
                 }
                 if (moodMessage.ToLower().Contains("sad"))
-                {
+                { 
                     return "SAD";
                 }
                 else
