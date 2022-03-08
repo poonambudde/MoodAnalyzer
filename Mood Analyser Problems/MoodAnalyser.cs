@@ -37,13 +37,11 @@ namespace Mood_Analyser_Problems
                 {
                     return "HAPPY";
                 }
-
             }
             catch(Exception ex)
             {
                 return ex.Message;
-            }
-            
+            }           
         }
     }
 }
