@@ -7,6 +7,7 @@ using static Mood_Analyser_Problems.MoodAnalyserCustomException;
 
 namespace Mood_Analyser_Problems
 {
+    
     public class MoodAnalyserReflector
     {
 
