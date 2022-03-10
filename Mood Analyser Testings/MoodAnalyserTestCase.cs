@@ -1,7 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mood_Analyser_Problems;
 
-namespace Mood_Analyser_Testing
+namespace Mood_Analyser_Testings
 {
     [TestClass]
     public class MoodAnalyserTestCase
@@ -172,13 +172,20 @@ namespace Mood_Analyser_Testing
         }
 
 
-        ///  TC 6.1 Given happy message using reflection when proper should return happy mood.
+        //  TC 6.1 Given happy message using reflection when proper should return happy mood.
         [TestMethod]
-        public void GivenHappyMessage_WhenUsingReflection_ThenShouldReturnHappyMood()
+        public void GivenHappyMessage_WhenUsingReflection_ThenShouldReturn_HappyMood()
         {
-            string expected = "Happy";
-            object obj = MoodAnalyserReflector.InvokeAnalyseMood("Happy", "AnalyseMood");
-            Assert.AreEqual(expected, obj);
+            try
+            {
+                MoodAnalyser moodAnalyser = new MoodAnalyser("Happy");
+                string gettingOutputofMoodAnalyseMethodByReflection = MoodAnalyserReflector.InvokeAnalyseMood("MoodAnalyser", "Happy");
+                Assert.AreEqual("Happy".ToUpper(), gettingOutputofMoodAnalyseMethodByReflection);
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual("Method is not found", ex.Message);
+            }
         }
 
         //  TC 6.2 Given happy message when improper method should throw Mood Analysis Exception.
@@ -186,14 +193,46 @@ namespace Mood_Analyser_Testing
         public void GivenHappyMessage_WhenImproperMethod_ShouldThrow_MoodAnalysisException()
 
         {
-            string expected = "Method is not found";
             try
             {
-                object obj = MoodAnalyserReflector.InvokeAnalyseMood("Happy", "WrongAnalyseMood");
+                MoodAnalyser moodAnalyser = new MoodAnalyser("Happy");
+                string gettingOutputofMoodAnalyseMethodByReflection = MoodAnalyserReflector.InvokeAnalyseMood("MoodAnalyser", "Happy");
+                Assert.AreEqual("Happy".ToUpper(), gettingOutputofMoodAnalyseMethodByReflection);
             }
             catch (MoodAnalyserCustomException ex)
             {
-                Assert.AreEqual(expected, ex.Message);
+                Assert.AreEqual("Method is not found", ex.Message);
+            }
+        }
+
+
+        // TC 7.1 Given field when improper then should throw exception with no such field
+        [TestMethod]
+        public void GivenField_WhenImproper_ThenShouldThrow_NoSuchFieldException()
+        {
+            string Expected = "Field is not found";
+            try
+            {
+                string result = MoodAnalyserReflector.SetField("Happy", "WrongmessageField");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual(Expected, ex.Message);
+            }
+        }
+
+        // TC 7.2 Given message when null then should throw exception message should not be null
+        [TestMethod]
+        public void GivenMessage_WhenNull_ThenShouldThrow_MessageShouldNotNullException()
+        {
+            string Expected = "Message should not be null";
+            try
+            {
+                string result = MoodAnalyserReflector.SetField(null, "message");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual(Expected, ex.Message);
             }
         }
     }
